@@ -1,5 +1,7 @@
 # 小红书起号运营 Skill
 
+**简体中文** · [English](./README.en.md)
+
 给 AI 助手装上的一套「小红书运营顾问」知识包。装好之后，你直接跟 AI 说人话——
 
 > 「我 300 粉，发了 12 条几乎没流量，问题出在哪？」
@@ -31,7 +33,28 @@
 
 这个 Skill 就是**一个文件夹 + 几个 Markdown 文件**，没有代码、没有依赖、不联网。所以理论上任何能读文件的 AI 都能用，区别只是装法。
 
-### Claude Code（最简单）
+### 方式一：让 AI 自己装（不用懂命令行）
+
+如果你用的是 Claude Code、Codex、Cursor 这类能操作文件的 AI，**不用自己敲命令**——把下面这段话整段复制给它就行：
+
+```
+帮我安装这个 Skill：https://github.com/zdrjson/xhs-growth-skill
+
+请你自己判断当前环境该装到哪里：
+- 如果是 Claude Code，clone 下来把里面的 xhs-growth 文件夹复制到 ~/.claude/skills/
+- 如果是 Codex、Cursor、Windsurf、Cline 这类工具，把 xhs-growth 文件夹放进当前项目，
+  并在你对应的规则文件（AGENTS.md / .cursor/rules/ / .windsurfrules / .clinerules）里加一条：
+  「聊到小红书运营、起号、涨粉、选题、爆款、变现时，先读 xhs-growth/SKILL.md，
+  再按里面的指引读对应的 references/ 文件」
+
+装完告诉我怎么确认装好了，以及我该怎么向你提问。
+```
+
+装完之后想用，也是直接说人话，比如「我 300 粉发了 12 条没流量，问题出在哪」。
+
+### 方式二：自己敲命令
+
+#### Claude Code（最简单）
 
 ```bash
 git clone https://github.com/zdrjson/xhs-growth-skill.git
@@ -42,7 +65,7 @@ cp -r xhs-growth-skill/xhs-growth ~/.claude/skills/
 
 > 只想给某个项目用？把 `xhs-growth` 放进项目里的 `.claude/skills/` 而不是 `~/.claude/skills/`。
 
-### Claude 桌面版 / claude.ai 网页版
+#### Claude 桌面版 / claude.ai 网页版
 
 这两个地方通过设置里的 **Skills（技能）** 上传，要的是一个 zip 包：
 
@@ -53,7 +76,7 @@ cd xhs-growth-skill && zip -r xhs-growth.zip xhs-growth
 
 然后在 **Settings → Capabilities / Skills → Upload skill** 里传 `xhs-growth.zip`。
 
-### Codex / Cursor / Windsurf / Cline 等编程类 Agent
+#### Codex / Cursor / Windsurf / Cline 等编程类 Agent
 
 这些工具大多不认 Skills 格式，但都认「项目里的说明文件」。把文件夹放进你的项目，再在它们各自的规则文件里加一句引用：
 
@@ -78,7 +101,7 @@ cp -r xhs-growth-skill/xhs-growth ./xhs-growth
 先读 xhs-growth/SKILL.md，再按里面的指引读对应的 references/ 文件。
 ```
 
-### ChatGPT / Gemini / DeepSeek / Kimi 等聊天式 AI
+#### ChatGPT / Gemini / DeepSeek / Kimi 等聊天式 AI
 
 不用装。两种用法，选一种：
 
